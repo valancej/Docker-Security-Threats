@@ -10,7 +10,9 @@ Docker security starts at the host layer, and is only as strong as this layer. I
 
 ## Securing Docker Images
 
-Encorporating the appropriate mechanisms to conduct static analysis on your container images gives insight into any potential vulnerable OS and non-OS packages. As discussed in previous posts, Anchore gives you the ability control whether or not you would like to promote non-compliant images into trusted registries through policy checks within a secure container build pipeline. This step is important because vulnerable images that make their way into production environments pose significant threats to those environments and are also costly. A nice article on shifting left: https://www.cloudbees.com/blog/continuous-security-delivering-secure-apps-kubernetes?utm_campaign=General&utm_source=LinkedIn&utm_medium=Organic&utm_term=Continuous%20Security%20blog
+Encorporating the appropriate mechanisms to conduct static analysis on your container images gives insight into any potential vulnerable OS and non-OS packages. As discussed in previous posts, Anchore gives you the ability control whether or not you would like to promote non-compliant images into trusted registries through policy checks within a secure container build pipeline. This step is important because vulnerable images that make their way into production environments pose significant threats to those environments and are also costly. 
+
+A nice article on shifting left: https://www.cloudbees.com/blog/continuous-security-delivering-secure-apps-kubernetes?utm_campaign=General&utm_source=LinkedIn&utm_medium=Organic&utm_term=Continuous%20Security%20blog
 
 ## Securing Container Runtime
 
