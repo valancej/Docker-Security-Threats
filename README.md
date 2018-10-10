@@ -10,9 +10,31 @@ Docker security starts at the host layer, and is only as strong as this layer. I
 
 ## Securing Docker Images
 
-Encorporating the appropriate mechanisms to conduct static analysis on your container images gives insight into any potential vulnerable OS and non-OS packages. As discussed in previous posts, Anchore gives you the ability control whether or not you would like to promote non-compliant images into trusted registries through policy checks within a secure container build pipeline. This step is important because vulnerable images that make their way into production environments pose significant threats to those environments and are also costly. 
+Encorporating the appropriate mechanisms to conduct static analysis on your container images gives insight into any potential vulnerable OS and non-OS packages. As discussed in previous posts, Anchore gives you the ability control whether or not you would like to promote non-compliant images into trusted registries through policy checks within a secure container build pipeline. This step is important because vulnerable images that make their way into production environments pose significant threats to those environments and are also costly. Within these images, focus on the security of the applications that will be running, although other checks are important, your application must be secure as well.
 
-A nice article on shifting left: https://www.cloudbees.com/blog/continuous-security-delivering-secure-apps-kubernetes
+A nice article on the shifting left paradigm: https://www.cloudbees.com/blog/continuous-security-delivering-secure-apps-kubernetes
 
 ## Securing Container Runtime
 
+It is important to set up tooling to monitor the containers themselves that are running. If new vulnerabilies get published that are impactful to a particular container, the appropriate alerting mechanisms need to be in place to quickly stop and replace the vulnerable container. Put simply, container infrastructure should be immutable.
+
+The first piece of securing the container runtime is securing the registries where the images reside. For organizations, it is considered best practice to only pull and run images from trusted container registries. As an added layer of security, only trusted and signed images should be promoted into production registies. Vulnerable, non-compliant images should not reside in container registires where images are staged for production deployments. 
+
+The Docker Engine hosts and runs built container images that are pulled from regisitres. Namespaces and Control Groups are two aspects of Docker Engine security that need to be taken into consideration. 
+
+Namespaces provide the first and most straightforward form of isolation: processes running within a container cannot see, and even less affect, processes running in another container, or in the host system.
+
+- Namespaces should always be activated.
+
+Control Groups implement resource accounting and limiting. 
+
+- Resource limits should always be set for containers. This way a single container does not hog all resources and bring down the system. 
+
+Additionally, the Docker daemon itself should only be controlled by trusted users. Currently, root privileges are required to run Docker commands, and caution should be executed when making changes to the Docker group. 
+
+Sysdig Falco is an example of a tool that will continuously monitor and detect anomalous activity in applications and containers: https://github.com/falcosecurity/falco/wiki/About-Falco
+
+
+## Conclusion
+
+Containerized applications and environments present different security concerns, but fundamentally basic concepts and best practices for Host Operating System security and application security can play critical roles is establishing a stronger container security posture. When discussing container adoption, container image scanning, runtime monitoring, and host security are great places to start, however security best practices like scanning application source code for vulnerabilies/coding errors both in open source and propriety, along with shifting left when security scanning all contribute to a more complete security environment overall. 
