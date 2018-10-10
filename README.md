@@ -6,7 +6,7 @@ In previous posts we've spent a significant amount of time diving into what Anch
 
 ## Securing the Host Operating System
 
-Docker security starts at the host layer, and is only as strong as this layer. If attackers were able to compromise the host OS, they could potentially compromise all processes on this OS, including Docker. For the vast majority of Docker users, the host operating systems in a Linux distribution, so best practices for secure OS infrastructure should follow. The host operating system should be kept patched and updated. One example of this is to minimize the attack surface of the host OS. For most secure infrastructure, the base OS should be specifically designed to run Docker only, no other processes that could be compromised. 
+Docker security starts at the host layer, and is only as strong as this layer. If attackers are able to compromise the host OS, they could potentially compromise all processes on this OS, including Docker. For the vast majority of Docker users, the host operating systems in a Linux distribution, so best practices for secure OS infrastructure should follow. The host operating system should be kept patched and updated. One example of this is to minimize the attack surface of the host OS. For most secure infrastructure, the base OS should be specifically designed to run Docker only, no other processes that could be compromised. 
 
 ## Securing Docker Images
 
